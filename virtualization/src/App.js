@@ -56,6 +56,7 @@ renderRow=({ index, key, style })=> {
     <div className="App">
       <div className="">
       <h1>Large Data Front End Demo</h1>
+      <p>Utilizes React List Virtualization to efficiently render 10,000 unit data set.</p>
       </div>
       <div className="grid-container">
      <div className="list">
@@ -69,7 +70,7 @@ renderRow=({ index, key, style })=> {
      </div>
      <div className="details">
      
-       <h1 id="name">Name:{this.state.name}</h1>
+       <h1 id="name">City:{this.state.name}</h1>
   
      </div> 
      </div>
