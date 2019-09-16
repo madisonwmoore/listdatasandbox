@@ -1,5 +1,12 @@
+body{
+  background-color: whitesmoke;
+}
+
+
 .App {
   text-align: center;
+ 
+ 
 }
 
 .App-logo {
@@ -32,7 +39,15 @@
   }
 }
 .list {
+ width: 90%;
+  height: calc(100vh - 210px);
+  grid-column-start: 1;
+  grid-column-end: 1;
+  background-color: white;
+  border-radius: 10px;
+  margin: 5px;
   padding: 10px;
+  outline: none;
 }
 .row { 
   border-bottom: 1px solid #ebeced;
@@ -41,9 +56,35 @@
   display: flex;
   align-items: center;
 }
+.row:hover{
+  background-color: lightgray;
+  cursor: pointer;
+}
 .image {
   margin-right: 10px;
 }
 .content {
   padding: 10px;
+
+}
+.details{
+  display:inline;
+  min-width: 90%;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  background-color: white;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+}
+.grid-container{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 20px;
+  height: 100%;
+}
+#name{
+  margin: 0 auto;
+  padding: none;
+  max-width: 200px;
 }
