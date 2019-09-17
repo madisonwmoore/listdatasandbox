@@ -39,7 +39,7 @@ body{
   }
 }
 .list {
- width: 90%;
+
   height: calc(100vh - 210px);
   grid-column-start: 1;
   grid-column-end: 1;
@@ -47,6 +47,12 @@ body{
   border-radius: 10px;
   margin: 5px;
   padding: 10px;
+  outline: none;
+  overflow:hidden;
+  box-shadow: 2px 7px 19px 0px rgba(166,166,166,1);
+
+}
+.ReactVirtualized__List {
   outline: none;
 }
 .row { 
@@ -65,26 +71,43 @@ body{
 }
 .content {
   padding: 10px;
+  text-overflow: ellipsis;
 
 }
 .details{
   display:inline;
-  min-width: 90%;
+
   grid-column-start: 2;
   grid-column-end: 2;
   background-color: white;
   border-radius: 10px;
   margin: 5px;
   padding: 10px;
+  overflow:hidden;
+  box-shadow: 2px 7px 19px 0px rgba(166,166,166,1);
 }
 .grid-container{
   display: grid;
-  grid-template-columns: auto auto;
-  grid-column-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+ column-gap: 20px;
   height: 100%;
 }
 #name{
-  margin: 0 auto;
-  padding: none;
-  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#profit{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.search-box{
+  display: inline;
+  width: auto;
+}
+.search-box input{
+  display: inline;
+  font-size: 16px;
+  width: 100%;
 }

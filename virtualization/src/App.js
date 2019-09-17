@@ -12,13 +12,16 @@ constructor(){
   super();
  
   this.state={
-    name:""
+    name:"       ",
+    profit:"   ",
+    text:"     "
   }
   this.list=Array(rowCount).fill().map((val,idx)=>{
     
     return{
       id:idx,
       city:faker.address.city(),
+      profit: faker.finance.amount(),
       name:faker.name.findName(),
       image:'http://via.placeholder.com/40',
       text: loremIpsum({
@@ -34,7 +37,7 @@ constructor(){
 renderRow=({ index, key, style })=> {
 
   return (
-    <div onClick={()=>{this.setState({name:this.list[index].city})}} key={key} style={style} className="row">
+    <div onClick={()=>{this.setState({name:this.list[index].city, profit:this.list[index].profit, text: this.list[index].text})}} key={key} style={style} className="row">
       <div className="image">
         <img src={this.list[index].image} alt="" />
       </div>
@@ -46,7 +49,21 @@ renderRow=({ index, key, style })=> {
   );
 }
 
+// searchBar=()=>{
+//   this.list=this.list.filter(str=>str.city.includes(document.getElementById("search").value));
+//   console.log(document.getElementById("search").value)
+ 
+// }
 
+// bindListRef = ref => {
+//   this.list = ref;
+// };
+
+// componentDidUpdate() {
+//   if (this.list) {
+//     this.list.forceUpdate();
+//   }
+// }
 
   render(){
     const rowWidth=800;
@@ -60,18 +77,22 @@ renderRow=({ index, key, style })=> {
       </div>
       <div className="grid-container">
      <div className="list">
-
+       <div className="search-box">
+<input  id="search" placeholder="Search..."type="text"/></div>
 <AutoSizer>
 {({width,height}) => (
-      <List width={width} height={height} rowHeight={rowHeight} rowRenderer={this.renderRow} rowCount={this.list.length}/>
+      <List ref={this.bindListRef} width={width} height={height} rowHeight={rowHeight} rowRenderer={this.renderRow} rowCount={this.list.length}/>
 )}
 </AutoSizer>
 
      </div>
      <div className="details">
      
-       <h1 id="name">City:{this.state.name}</h1>
-  
+       <h2 id="name">{this.state.name}</h2>
+       <br/>
+       <p>{this.state.text}</p>
+       <br/>
+       <h2 id="profit">Profit:${this.state.profit}</h2>
      </div> 
      </div>
     </div>
