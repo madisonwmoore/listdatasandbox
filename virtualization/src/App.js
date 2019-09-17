@@ -14,7 +14,9 @@ constructor(){
   this.state={
     name:"       ",
     profit:"   ",
-    text:"     "
+    text:"     ",
+    list:"",
+    sortBy:""
   }
   this.list=Array(rowCount).fill().map((val,idx)=>{
     
@@ -34,26 +36,31 @@ constructor(){
   })
 }
 
+componentDidMount=()=>{
+  
+}
+
 renderRow=({ index, key, style })=> {
 
   return (
-    <div onClick={()=>{this.setState({name:this.list[index].city, profit:this.list[index].profit, text: this.list[index].text})}} key={key} style={style} className="row">
+    <div onClick={()=>{this.setState({name:this.searchBar()[index].city, profit:this.searchBar()[index].profit, text: this.searchBar()[index].text})}} key={key} style={style} className="row">
       <div className="image">
-        <img src={this.list[index].image} alt="" />
+        <img src={this.searchBar()[index].image} alt="" />
       </div>
       <div className="content">
-        <div>{this.list[index].city}</div>
-        <div>{this.list[index].text}</div>
+        <div>{this.searchBar()[index].city}</div>
+        <div>{this.searchBar()[index].text}</div>
       </div>
     </div>
   );
 }
 
-// searchBar=()=>{
-//   this.list=this.list.filter(str=>str.city.includes(document.getElementById("search").value));
-//   console.log(document.getElementById("search").value)
- 
-// }
+searchBar=()=>{
+
+// this.list=array;
+this.setState({sortBy:document.getElementById("search").value});
+  return this.list.filter(str=>str.city.includes(document.getElementById("search").value));;
+}
 
 // bindListRef = ref => {
 //   this.list = ref;
@@ -78,10 +85,10 @@ renderRow=({ index, key, style })=> {
       <div className="grid-container">
      <div className="list">
        <div className="search-box">
-<input  id="search" placeholder="Search..."type="text"/></div>
+<input onChange={()=>this.searchBar()} id="search" placeholder="Search..."type="text"/></div>
 <AutoSizer>
 {({width,height}) => (
-      <List ref={this.bindListRef} width={width} height={height} rowHeight={rowHeight} rowRenderer={this.renderRow} rowCount={this.list.length}/>
+      <List sortBy={this.state.sortBy} width={width} height={height} rowHeight={rowHeight} rowRenderer={this.renderRow} rowCount={this.list.length}/>
 )}
 </AutoSizer>
 
