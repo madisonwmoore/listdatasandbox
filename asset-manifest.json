@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/listdatasandbox/static/css/main.51df861a.chunk.css",
+    "main.css": "/listdatasandbox/static/css/main.20f0db21.chunk.css",
     "main.js": "/listdatasandbox/static/js/main.7ae9b04a.chunk.js",
     "main.js.map": "/listdatasandbox/static/js/main.7ae9b04a.chunk.js.map",
     "runtime~main.js": "/listdatasandbox/static/js/runtime~main.3b0fe13c.js",
@@ -8,8 +8,8 @@
     "static/js/2.5b1c0a53.chunk.js": "/listdatasandbox/static/js/2.5b1c0a53.chunk.js",
     "static/js/2.5b1c0a53.chunk.js.map": "/listdatasandbox/static/js/2.5b1c0a53.chunk.js.map",
     "index.html": "/listdatasandbox/index.html",
-    "precache-manifest.412c41099084b5bd305666626645a8c3.js": "/listdatasandbox/precache-manifest.412c41099084b5bd305666626645a8c3.js",
+    "precache-manifest.0f8f185709af6d10d9f523d794b8cfcf.js": "/listdatasandbox/precache-manifest.0f8f185709af6d10d9f523d794b8cfcf.js",
     "service-worker.js": "/listdatasandbox/service-worker.js",
-    "static/css/main.51df861a.chunk.css.map": "/listdatasandbox/static/css/main.51df861a.chunk.css.map"
+    "static/css/main.20f0db21.chunk.css.map": "/listdatasandbox/static/css/main.20f0db21.chunk.css.map"
   }
 }
