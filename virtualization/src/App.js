@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { loremIpsum } from "lorem-ipsum";
 import { List,AutoSizer } from "react-virtualized";
 import faker from 'faker/locale/en_US';
+import {LineGraph} from "./components/LineGraph"
 
 const rowCount=10000;
 
@@ -16,7 +16,8 @@ constructor(){
     profit:"   ",
     text:"     ",
     list:"",
-    sortBy:""
+    sortBy:"",
+    data:[0,1,2,3,4,5,6,7,8,9]
   }
   this.list=Array(rowCount).fill().map((val,idx)=>{
     
@@ -25,6 +26,7 @@ constructor(){
       city:faker.address.city(),
       profit: faker.finance.amount(),
       name:faker.name.findName(),
+      data: new Array(10).fill().map((val,idx)=>val=Math.floor(Math.random()*5)),
       image:'http://via.placeholder.com/40',
       text: loremIpsum({
         count: 1,
@@ -43,7 +45,7 @@ componentDidMount=()=>{
 renderRow=({ index, key, style })=> {
 
   return (
-    <div onClick={()=>{this.setState({name:this.searchBar()[index].city, profit:this.searchBar()[index].profit, text: this.searchBar()[index].text})}} key={key} style={style} className="row">
+    <div onClick={()=>{this.setState({name:this.searchBar()[index].city, data:this.searchBar()[index].data,profit:this.searchBar()[index].profit, text: this.searchBar()[index].text})}} key={key} style={style} className="row">
       <div className="image">
         <img src={this.searchBar()[index].image} alt="" />
       </div>
@@ -59,7 +61,7 @@ searchBar=()=>{
 
 // this.list=array;
 this.setState({sortBy:document.getElementById("search").value});
-  return this.list.filter(str=>str.city.includes(document.getElementById("search").value));;
+  return this.list.filter(str=>str.city.startsWith(document.getElementById("search").value));;
 }
 
 // bindListRef = ref => {
@@ -88,7 +90,7 @@ this.setState({sortBy:document.getElementById("search").value});
 <input onChange={()=>this.searchBar()} id="search" placeholder="Search..."type="text"/></div>
 <AutoSizer>
 {({width,height}) => (
-      <List sortBy={this.state.sortBy} width={width} height={height} rowHeight={rowHeight} rowRenderer={this.renderRow} rowCount={this.list.length}/>
+      <List re={this.state.sortBy} width={width} height={height} rowHeight={rowHeight} rowRenderer={this.renderRow} rowCount={this.list.length}/>
 )}
 </AutoSizer>
 
@@ -100,7 +102,10 @@ this.setState({sortBy:document.getElementById("search").value});
        <p>{this.state.text}</p>
        <br/>
        <h2 id="profit">Profit:${this.state.profit}</h2>
+       <br/>
+        <LineGraph data={this.state.data}/>
      </div> 
+    
      </div>
     </div>
   );

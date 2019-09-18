@@ -1,0 +1,15 @@
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 2px;
+  }
+
+.line:hover{
+    stroke: rgb(27, 134, 221);
+    stroke-width: 4px;
+}
+
+
+  /* #graph{
+      width: 500px;
+  } */
